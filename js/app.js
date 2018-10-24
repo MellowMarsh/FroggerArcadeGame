@@ -7,7 +7,6 @@ var Enemy = function (x, y, speed) {
     this.x = x;
     this.y = y;
     this.speed = speed
-  
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -63,31 +62,31 @@ Player.prototype.update = function (dt) {
 // Allows the user to use the arrow keys to jump from tile to tile
 Player.prototype.handleInput = function (keyPress) {
 
-var xAxis = 83;
-var yAxis = 100;
 
+var xAxis = 100;
+var yAxis = 83;
 
-
+  // The postions of player moves on the gameboard and keeps players on canvas
     if (keyPress == 'left' && this.x > 0) {
-        this.x -= yAxis;
+        this.x -= xAxis;
     };
 
     if (keyPress == 'right' && this.x < 410) {
-          this.x += yAxis;
+          this.x += xAxis;
       };
 
     if (keyPress == 'up' && this.y > 0) {
-        this.y -= xAxis ;
+        this.y -= yAxis ;
     };
     if (keyPress == 'down' && this.y < 410) {
-        this.y += xAxis ;
+        this.y += yAxis ;
     };
     //when player reaches water repostion to start of game
      if (this.y < 0) {
          setTimeout(() => {
              this.x = 205;
              this.y = 410;
-         }, 500);
+         }, 1000);
    };
 };
 
