@@ -10,19 +10,19 @@
 
 ## Game Goal and How to Play:
 
-*The goal is to match is to jump into the water. 
+* The goal is to match is to jump into the water. 
 
-*Using the arrow keys on your keyboard, move upwards.
+* Using the arrow keys on your keyboard, move upwards or side to side.
 
-*Try and avoid the cockroaches and try and jump into the water.
+* Try and avoid the enemy beetles and try and jump into the water.
 
-*If you made it in the water, you can play again. If you collided with a enemy beetle, start again!
+* If you made it in the water, you can play again. If you collided with a enemy beetle, start again!
 
 ## Tools Used:
 
-*Getting started Udacity excersize:
-https://github.com/udacity/frontend-nanodegree-arcade-game
+* Getting started Udacity excersize:
+  https://github.com/udacity/frontend-nanodegree-arcade-game
 
 
-*Udacity FEND Webinar - Project #3 Walkthrough
-https://www.youtube.com/watch?v=JcQYGbg0IkQ
+* Udacity FEND Webinar - Project #3 Walkthrough
+  https://www.youtube.com/watch?v=JcQYGbg0IkQ
