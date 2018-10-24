@@ -4,25 +4,26 @@ Installing from Source
 
 Clone the following repo:
 
-git clone 
+git clone https://github.com/MellowMarsh/froggerArcadeGame.git
 Load index.html in browser.
 
 Play the game
 
 How to Play:
 
-The goal is to match is to jump into the water. Click in the following link to play: https://ul1ra.github.io/ClassicArcadeGame/
+The goal is to match is to jump into the water. 
 
 Using the arrow keys on your keyboard, move upwards.
 
 Try and avoid the cockroaches and try and jump into the water.
 
-If you made it in the water, you can play again. If you collided with a cockroach, start again!
+If you made it in the water, you can play again. If you collided with a enemy beetle, start again!
 
 Tools Used:
 
 Getting started Udacity excersize:
 https://github.com/udacity/frontend-nanodegree-arcade-game
-Inspiration
 
-Collision function: https://stackoverflow.com/questions/2440377/javascript-collision-detection
+
+Udacity FEND Webinar - Project #3 Walkthrough
+https://www.youtube.com/watch?v=JcQYGbg0IkQ
