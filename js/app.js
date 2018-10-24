@@ -1,12 +1,14 @@
 // Enemies our player must avoid
-var Enemy = function (x, y, speed) {
+//Appearance, starting postion, and speed of enemy
 
-    // The following variables are used to determine the x and y axis and speed of the enemy
+var Enemy = function (x, y, speed) {
+  // Variables applied to each of our instances go here,
+  // we've provided one for you to get started
     this.x = x;
     this.y = y;
-    this.speed = speed;
-
-    // The image of the enemy of cockroach that is added to the playing field
+    this.speed = speed
+    // The image/sprite for our enemies, this uses
+    // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -17,19 +19,21 @@ Enemy.prototype.update = function (dt) {
   // which will ensure the game runs at the same speed for
   // all computers.
     this.x += this.speed * dt;
+
   //reset position of enemy to move across canvas
-    if (this.x > 500) {
+    if (this.x > 550) {
         this.x = 0;
-        this.speed =100+Math.floor(Math.random() * 350);
+        this.speed =Math.floor((Math.random() * 500)+100);
     }
     // Checks for collisions between the player and the enemies on the x and y axis
-    if (player.x < this.x + 80 &&
-        player.x + 80 > this.x &&
-        player.y < this.y + 60 &&
-        60 + player.y > this.y) {
-        player.x = 200;
+    if (player.x < this.x + 90 &&
+        player.x + 60 > this.x &&
+        player.y < this.y + 30 &&
+        35 + player.y > this.y) {
+        player.x = 205;
         player.y = 410;
     };
+
 };
 
 // Draw the enemy on the screen, required method for game
@@ -39,49 +43,51 @@ Enemy.prototype.render = function () {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function (x, y, speed) {
-    //The image of the player of princess-girl is added to the playing field
-    this.player = 'images/char-princess-girl.png';
+var Player = function (x, y) {
     this.x = x;
     this.y = y;
-    this.speed= speed;
+    //The image of the player of princess-girl is added to the playing field
+    this.player = 'images/char-princess-girl.png';
+
+};
+// Draw the image of the player on the screen, required method for game
+Player.prototype.render = function () {
+    ctx.drawImage(Resources.get(this.player), this.x, this.y);
 };
 
 Player.prototype.update = function (dt) {
 
 };
 
-// Renders the image of the user into the game
-Player.prototype.render = function () {
-    ctx.drawImage(Resources.get(this.player), this.x, this.y);
-};
-
 // Allows the user to use the arrow keys to jump from tile to tile
 Player.prototype.handleInput = function (keyPress) {
 
+var xAxis = 83;
+var yAxis = 100;
+
+
+
     if (keyPress == 'left' && this.x > 0) {
-        this.x -= 100;
+        this.x -= yAxis;
     };
 
     if (keyPress == 'right' && this.x < 410) {
-          this.x += 100;
+          this.x += yAxis;
       };
 
     if (keyPress == 'up' && this.y > 0) {
-        this.y -= 83;
+        this.y -= xAxis ;
     };
-
     if (keyPress == 'down' && this.y < 410) {
-        this.y += 83;
+        this.y += xAxis ;
     };
-
-    if (this.y < 0) {
-        setTimeout(() => {
-            this.x = 200;
-            this.y = 410;
-        }, 500);
-
-  };
+    //when player reaches water repostion to start of game
+     if (this.y < 0) {
+         setTimeout(() => {
+             this.x = 205;
+             this.y = 410;
+         }, 500);
+   };
 };
 
 // Now instantiate your objects.
@@ -89,11 +95,12 @@ Player.prototype.handleInput = function (keyPress) {
 // Place the player object in a variable called player
 var allEnemies = [];
 //posion of enemy on the x and y axis
-var enemy= [50, 150, 225];
-var player = new Player(200, 410);
+var enemy= [60, 140, 225];
+
+var player = new Player(205, 410);
 
 enemy.forEach(function (posY) {
-  enemy = new Enemy(0, posY, 150);
+  enemy = new Enemy(0, posY,100);
 
     allEnemies.push(enemy);
 });
