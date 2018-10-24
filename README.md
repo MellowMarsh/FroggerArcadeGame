@@ -24,6 +24,12 @@
 * Cloned Repo:
   https://github.com/udacity/frontend-nanodegree-arcade-game
 
-
 * Udacity FEND Webinar - Project #3 Walkthrough
   https://www.youtube.com/watch?v=JcQYGbg0IkQ
+  
+* StackOverflow
+  https://stackoverflow.com/questions/23870938/math-random-function-not-properly-working-in-javascript-with-if-statement
+  
+* MDN
+  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+  
