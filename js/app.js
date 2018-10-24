@@ -13,41 +13,38 @@ var Enemy = function (x, y, speed) {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function (dt) {
-
-    // Multiplies the speed by the dt parameter on the x axis
+  // You should multiply any movement by the dt parameter
+  // which will ensure the game runs at the same speed for
+  // all computers.
     this.x += this.speed * dt;
-
-    // Once enemies are off the canvas, they reappear randomly with different speeds
-    if (this.x > 510) {
-        this.x = -50;
-        this.speed = 100 + Math.floor(Math.random() * 222);
-
-    };
-
-    // Checks for collisions between the player and the enemies
+  //reset position of enemy to move across canvas
+    if (this.x > 500) {
+        this.x = 0;
+        this.speed =100+Math.floor(Math.random() * 350);
+    }
+    // Checks for collisions between the player and the enemies on the x and y axis
     if (player.x < this.x + 80 &&
         player.x + 80 > this.x &&
         player.y < this.y + 60 &&
         60 + player.y > this.y) {
-        player.x = 202;
-        player.y = 405;
+        player.x = 200;
+        player.y = 410;
     };
 };
 
-// Renders the enemy into the game
+// Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
-// Player class focusing on x and y axis
-var Player = function (x, y) {
-
-    // Variables for the player to move along x and y axis
+// Now write your own player class
+// This class requires an update(), render() and
+// a handleInput() method.
+var Player = function (x, y, speed) {
+    //The image of the player of princess-girl is added to the playing field
+    this.player = 'images/char-princess-girl.png';
     this.x = x;
     this.y = y;
-
-    //The image of the player of horn-girl is added to the playing field
-    this.player = 'images/char-princess-girl.png';
+    this.speed= speed;
 };
 
 Player.prototype.update = function (dt) {
@@ -62,56 +59,44 @@ Player.prototype.render = function () {
 // Allows the user to use the arrow keys to jump from tile to tile
 Player.prototype.handleInput = function (keyPress) {
 
-    // Enables user on left arrow key to move left on the x axis by 102
-    // Also enables user not to go off the game tiles on the left side
     if (keyPress == 'left' && this.x > 0) {
-        this.x -= 102;
+        this.x -= 100;
     };
 
-    // Enables user on right arrow key to move right on the x axis by 102
-    // Also enables user not to go off the game tiles on the right side
-    if (keyPress == 'right' && this.x < 405) {
-        this.x += 102;
-    };
+    if (keyPress == 'right' && this.x < 410) {
+          this.x += 100;
+      };
 
-    // Enables user on up arrow key to move upwards on the y axis by 83
     if (keyPress == 'up' && this.y > 0) {
         this.y -= 83;
     };
 
-    // Enables user on down arrow key to move downwards on the y axis by 83
-    // Also enables user not to go off the game tiles on the bottom side
-    if (keyPress == 'down' && this.y < 405) {
+    if (keyPress == 'down' && this.y < 410) {
         this.y += 83;
     };
 
-    // Once the user reaches the top of the page; the water, the user is
-    // Instantly reset to the starting position
     if (this.y < 0) {
         setTimeout(() => {
-            this.x = 202;
-            this.y = 405;
-        }, 800);
-    };
+            this.x = 200;
+            this.y = 410;
+        }, 500);
+
+  };
 };
 
-
-// All enemies are placed in an array
+// Now instantiate your objects.
+// Place all enemy objects in an array called allEnemies
+// Place the player object in a variable called player
 var allEnemies = [];
+//posion of enemy on the x and y axis
+var enemy= [50, 150, 225];
+var player = new Player(200, 410);
 
-// Location of the 3 enemies on the y axis located on the stone road
-var enemyLocation = [63, 147, 230];
+enemy.forEach(function (posY) {
+  enemy = new Enemy(0, posY, 150);
 
-
-// For each enemy located on the y axis from 0 on the x axis move at a speed of 200
-// Until randomly regenerated in the enemy update function above
-enemyLocation.forEach(function (locationY) {
-    enemy = new Enemy(0, locationY, 200);
     allEnemies.push(enemy);
 });
-
-// The starting location of the player is located at x=200, y=405
-var player = new Player(202, 405);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method.
