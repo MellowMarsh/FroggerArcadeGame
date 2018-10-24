@@ -3,7 +3,7 @@
 ## Installing from Source
 
 * Clone the following repo:
- https://github.com/MellowMarsh/froggerArcadeGame.git
+  https://github.com/MellowMarsh/FroggerArcadeGame.git
 * Load index.html in browser.
 
 * Play the game
