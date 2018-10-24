@@ -7,6 +7,7 @@ var Enemy = function (x, y, speed) {
     this.x = x;
     this.y = y;
     this.speed = speed
+  
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
