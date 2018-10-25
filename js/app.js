@@ -1,9 +1,9 @@
 // Enemies our player must avoid
 //Appearance, starting postion, and speed of enemy
-var Enemy = function(x, y, speed) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-    
+var Enemy = function (x, y, speed) {
+  // Variables applied to each of our instances go here,
+  // we've provided one for you to get started
+
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -14,22 +14,22 @@ var Enemy = function(x, y, speed) {
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+Enemy.prototype.update = function (dt) {
+  // You should multiply any movement by the dt parameter
+  // which will ensure the game runs at the same speed for
+  // all computers.
     this.x += this.speed * dt;
 
-    //reset position of enemy to move across canvas with random speeds
+  //reset position of enemy to move across canvas with random speeds
     if (this.x > 550) {
         this.x = 0;
-        this.speed = Math.floor((Math.random() * 300) + 100);
+        this.speed = Math.floor((Math.random() * 300)+100);
     }
     // Checks for collisions between the player and the enemies on the x and y axis
     if (player.x < this.x + 100 &&
         player.x + 100 > this.x &&
         player.y < this.y + 50 &&
-        50 + player.y > this.y) {
+        50+ player.y > this.y) {
         player.x = 202;
         player.y = 405;
     };
@@ -37,52 +37,53 @@ Enemy.prototype.update = function(dt) {
 };
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
+Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function(x, y) {
+
+//Appearance and position of player
+var Player = function (x, y) {
     //The image of the player of princess-girl is added to the playing field
     this.player = 'images/char-princess-girl.png';
     this.x = x;
     this.y = y;
-    //no need to add speed here
-
+    //no need to add speed here.
 };
 
-Player.prototype.update = function(dt) {
+Player.prototype.update = function (dt) {
 
 };
 // Draw the image of the player on the screen, required method for game
-Player.prototype.render = function() {
+Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.player), this.x, this.y);
 };
 
-// Allows the user to use the arrow keys to jump from tile to tile
-Player.prototype.handleInput = function(keyPress) {
+// Allows the user to press the arrow keys to jump from tile to tile
+Player.prototype.handleInput = function (keyPress) {
 
-    var xAxis = 102;
-    var yAxis = 83;
+var xAxis = 102;
+var yAxis = 83;
 
-    // The postions of player moves on the gameboard and keeps players on canvas
+  // The postions of player moves on the gameboard and keeps players on canvas
     if (keyPress == 'left' && this.x > 0) {
         this.x -= xAxis;
-    } else if (keyPress == 'right' && this.x < 405) {
-        this.x += xAxis;
-    } else if (keyPress == 'up' && this.y > 0) {
-        this.y -= yAxis;
-    } else if (keyPress == 'down' && this.y < 405) {
-        this.y += yAxis;
+    }else if (keyPress == 'right' && this.x < 405) {
+          this.x += xAxis;
+    }else if (keyPress == 'up' && this.y > 0) {
+        this.y -= yAxis ;
+    }else if (keyPress == 'down' && this.y < 405) {
+        this.y += yAxis ;
     }
     //when player reaches water this repositions to start of game
-    if (this.y < 0) {
-        setTimeout(() => {
-            this.x = 202;
-            this.y = 405;
-        }, 1000);
-    };
+     if (this.y < 0) {
+         setTimeout(() => {
+             this.x = 202;
+             this.y = 405;
+         }, 1000);
+   };
 };
 
 // Now instantiate your objects.
@@ -90,19 +91,19 @@ Player.prototype.handleInput = function(keyPress) {
 // Place the player object in a variable called player
 var allEnemies = [];
 //position of enemy beetles
-var enemyPosition = [60, 140, 225];
-//creates a new player at the postion of 202 and 405
+var enemyPosition= [60, 140, 225];
+//creates a new player at the postion of 205 and 410
 var player = new Player(202, 405);
 
 //new enemy beetles are created at x=0 at the position of y with a speed of 300
-enemyPosition.forEach(function(posY) {
-    enemy = new Enemy(0, posY, 300);
-    allEnemies.push(enemy);
+enemyPosition.forEach(function (posY) {
+  enemy = new Enemy(0, posY, 300);
+  allEnemies.push(enemy);
 });
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method.
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keyup', function (e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',
