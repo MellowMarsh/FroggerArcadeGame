@@ -22,7 +22,7 @@ Enemy.prototype.update = function (dt) {
   //reset position of enemy to move across canvas with random speeds
     if (this.x > 550) {
         this.x = 0;
-        this.speed =Math.floor((Math.random() * 300)+100);
+        this.speed = Math.floor((Math.random() * 300)+100);
     }
     // Checks for collisions between the player and the enemies on the x and y axis
     if (player.x < this.x + 100 &&
@@ -94,7 +94,7 @@ var player = new Player(205, 410);
 
 //new enemy beetles are created at x=0 at the position of y with a speed of 300
 enemyPosition.forEach(function (posY) {
-  enemy = new Enemy(0,  posY, 300);
+  enemy = new Enemy(0, posY, 300);
   allEnemies.push(enemy);
 });
 
