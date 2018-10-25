@@ -26,8 +26,8 @@ Enemy.prototype.update = function (dt) {
         this.speed = Math.floor((Math.random() * 300)+100);
     }
     // Checks for collisions between the player and the enemies on the x and y axis
-    if (player.x < this.x + 100 &&
-        player.x + 100 > this.x &&
+    if (player.x < this.x + 65 &&
+        player.x + 65 > this.x &&
         player.y < this.y + 50 &&
         50+ player.y > this.y) {
         player.x = 202;
