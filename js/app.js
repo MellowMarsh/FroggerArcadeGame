@@ -1,6 +1,5 @@
 // Enemies our player must avoid
 //Appearance, starting postion, and speed of enemy
-
 var Enemy = function (x, y, speed) {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
@@ -20,16 +19,16 @@ Enemy.prototype.update = function (dt) {
   // all computers.
     this.x += this.speed * dt;
 
-  //reset position of enemy to move across canvas
+  //reset position of enemy to move across canvas with random speeds
     if (this.x > 550) {
         this.x = 0;
-        this.speed =Math.floor((Math.random() * 500)+100);
+        this.speed =Math.floor((Math.random() * 300)+100);
     }
     // Checks for collisions between the player and the enemies on the x and y axis
-    if (player.x < this.x + 90 &&
-        player.x + 60 > this.x &&
-        player.y < this.y + 30 &&
-        35 + player.y > this.y) {
+    if (player.x < this.x + 100 &&
+        player.x + 100 > this.x &&
+        player.y < this.y + 50 &&
+        50+ player.y > this.y) {
         player.x = 205;
         player.y = 410;
     };
@@ -59,9 +58,8 @@ Player.prototype.update = function (dt) {
 
 };
 
-// Allows the user to use the arrow keys to jump from tile to tile
+// Allows the user to control game with the arrow keys to jump from tile to tile
 Player.prototype.handleInput = function (keyPress) {
-
 
 var xAxis = 100;
 var yAxis = 83;
@@ -69,19 +67,14 @@ var yAxis = 83;
   // The postions of player moves on the gameboard and keeps players on canvas
     if (keyPress == 'left' && this.x > 0) {
         this.x -= xAxis;
-    };
-
-    if (keyPress == 'right' && this.x < 410) {
+    }else if (keyPress == 'right' && this.x < 410) {
           this.x += xAxis;
-      };
-
-    if (keyPress == 'up' && this.y > 0) {
+      }else if (keyPress == 'up' && this.y > 0) {
         this.y -= yAxis ;
-    };
-    if (keyPress == 'down' && this.y < 410) {
+    }else if (keyPress == 'down' && this.y < 410) {
         this.y += yAxis ;
-    };
-    //when player reaches water repostion to start of game
+    }
+    //when player reaches water this repositions to start of game
      if (this.y < 0) {
          setTimeout(() => {
              this.x = 205;
@@ -94,15 +87,15 @@ var yAxis = 83;
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [];
-//posion of enemy on the x and y axis
-var enemy= [60, 140, 225];
-
+//position of enemy beetles
+var enemyPosition= [60, 140, 225];
+//creates a new player at the postion of 205 and 410
 var player = new Player(205, 410);
 
-enemy.forEach(function (posY) {
-  enemy = new Enemy(0, posY,100);
-
-    allEnemies.push(enemy);
+//new enemy beetles are created at x=0 at the position of y with a speed of 300
+enemyPosition.forEach(function (posY) {
+  enemy = new Enemy(0,  posY, 300);
+  allEnemies.push(enemy);
 });
 
 // This listens for key presses and sends the keys to your
