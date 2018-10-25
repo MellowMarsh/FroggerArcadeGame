@@ -21,8 +21,8 @@ Enemy.prototype.update = function (dt) {
     this.x += this.speed * dt;
 
   //reset position of enemy to move across canvas with random speeds
-    if (this.x > 550) {
-        this.x = 0;
+    if (this.x > 506) {
+        this.x=0;
         this.speed = Math.floor((Math.random() * 300)+100);
     }
     // Checks for collisions between the player and the enemies on the x and y axis
@@ -30,8 +30,8 @@ Enemy.prototype.update = function (dt) {
         player.x + 65 > this.x &&
         player.y < this.y + 50 &&
         50+ player.y > this.y) {
-        player.x = 202;
-        player.y = 405;
+        player.x = 200;
+        player.y = 400;
     };
 
 };
@@ -64,24 +64,24 @@ Player.prototype.render = function () {
 // Allows the user to press the arrow keys to jump from tile to tile
 Player.prototype.handleInput = function (keyPress) {
 
-var xAxis = 102;
+var xAxis = 100;
 var yAxis = 83;
 
   // The postions of player moves on the gameboard and keeps players on canvas
     if (keyPress == 'left' && this.x > 0) {
         this.x -= xAxis;
-    }else if (keyPress == 'right' && this.x < 405) {
+    }else if (keyPress == 'right' && this.x < 400) {
           this.x += xAxis;
     }else if (keyPress == 'up' && this.y > 0) {
         this.y -= yAxis ;
-    }else if (keyPress == 'down' && this.y < 405) {
+    }else if (keyPress == 'down' && this.y < 400) {
         this.y += yAxis ;
     }
     //when player reaches water this repositions to start of game
      if (this.y < 0) {
          setTimeout(() => {
-             this.x = 202;
-             this.y = 405;
+             this.x = 200;
+             this.y = 400;
          }, 1000);
    };
 };
@@ -92,8 +92,8 @@ var yAxis = 83;
 var allEnemies = [];
 //position of enemy beetles
 var enemyPosition= [60, 140, 225];
-//creates a new player at the postion of 205 and 410
-var player = new Player(202, 405);
+//creates a new player at the postion of 200 and 400
+var player = new Player(200, 400);
 
 //new enemy beetles are created at x=0 at the position of y with a speed of 300
 enemyPosition.forEach(function (posY) {
