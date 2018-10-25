@@ -13,11 +13,11 @@
 
 * The goal is to get player to jump into the water. 
 
-* Using the arrow keys on your keyboard, move upwards, down, or side to side.
+* Using the arrow keys on your keyboard, move up, down, or side to side.
 
 * Try and avoid the enemy beetles.
 
-* If you made it in the water, you can play again. If you collided with a enemy beetle, start again!
+* If you made it in the water, you can play again. If you collided with a enemy beetle, the player moves back to start position.
 
 ## Tools Used:
 
