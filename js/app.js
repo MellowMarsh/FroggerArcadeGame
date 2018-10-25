@@ -69,7 +69,7 @@ var yAxis = 83;
         this.x -= xAxis;
     }else if (keyPress == 'right' && this.x < 410) {
           this.x += xAxis;
-      }else if (keyPress == 'up' && this.y > 0) {
+    }else if (keyPress == 'up' && this.y > 0) {
         this.y -= yAxis ;
     }else if (keyPress == 'down' && this.y < 410) {
         this.y += yAxis ;
