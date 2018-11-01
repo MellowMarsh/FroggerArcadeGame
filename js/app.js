@@ -21,19 +21,20 @@ Enemy.prototype.update = function (dt) {
     this.x += this.speed * dt;
 
   //reset position of enemy to move across canvas with random speeds
-    if (this.x > 506) {
-        this.x=0;
+    if (this.x > 606) {
+        this.x=-150;
         this.speed = Math.floor((Math.random() * 300)+100);
     }
-    // Checks for collisions between the player and the enemies on the x and y axis
+    // Checks for collisions between the player and the enemies on the x and y axis gives height and width in pixels
     if (player.x < this.x + 65 &&
         player.x + 65 > this.x &&
         player.y < this.y + 50 &&
         50+ player.y > this.y) {
+        //ctx.fillRect("REPLAY", this.x,this.y);
         player.x = 200;
         player.y = 400;
-    };
 
+    };
 };
 
 // Draw the enemy on the screen, required method for game
