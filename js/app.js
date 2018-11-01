@@ -30,7 +30,7 @@ Enemy.prototype.update = function (dt) {
         player.x + 65 > this.x &&
         player.y < this.y + 50 &&
         50+ player.y > this.y) {
-        //ctx.fillRect("REPLAY", this.x,this.y);
+        //would like a loose pop up here ctx.fillRect("REPLAY", this.x,this.y);
         player.x = 200;
         player.y = 400;
 
@@ -79,6 +79,7 @@ var yAxis = 83;
         this.y += yAxis ;
     }
     //when player reaches water this repositions to start of game
+    //my win pop up needs to be here
      if (this.y < 0) {
          setTimeout(() => {
              this.x = 200;
