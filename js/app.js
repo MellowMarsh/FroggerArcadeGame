@@ -1,3 +1,4 @@
+
 // Enemies our player must avoid
 //Appearance, starting postion, and speed of enemy
 var Enemy = function (x, y, speed) {
@@ -21,8 +22,8 @@ Enemy.prototype.update = function (dt) {
     this.x += this.speed * dt;
 
   //reset position of enemy to move across canvas with random speeds
-    if (this.x > 606) {
-        this.x=-150;
+    if (this.x > 505) {
+        this.x=-100;
         this.speed = Math.floor((Math.random() * 300)+100);
     }
     // Checks for collisions between the player and the enemies on the x and y axis gives height and width in pixels
@@ -30,7 +31,7 @@ Enemy.prototype.update = function (dt) {
         player.x + 65 > this.x &&
         player.y < this.y + 50 &&
         50+ player.y > this.y) {
-        //would like a loose pop up here ctx.fillRect("REPLAY", this.x,this.y);
+        alert("Start Over!");
         player.x = 200;
         player.y = 400;
 
@@ -80,8 +81,10 @@ var yAxis = 83;
     }
     //when player reaches water this repositions to start of game
     //my win pop up needs to be here
+
      if (this.y < 0) {
          setTimeout(() => {
+       alert('You Won!');
              this.x = 200;
              this.y = 400;
          }, 1000);
