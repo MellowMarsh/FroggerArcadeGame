@@ -1,21 +1,4 @@
 
-//this shows the number of lives
-//var Item = function (x , y , star){
-  //this.star ='images/Star.png';
-  //this.x=x;
-  //this.y=y;
-
-//};
-//draw stars on canvas
-//    //ctx.drawImage(Resources.get(this.star), this.x, this.y);
-
-//};
-
-//Item.prototype.update = function (dt) {
-
-//};
-
-
 // Enemies our player must avoid
 //Appearance, starting postion, and speed of enemy
 var Enemy = function (x, y, speed ) {
@@ -30,6 +13,11 @@ var Enemy = function (x, y, speed ) {
     this.speed = speed;
 };
 
+// Draw the enemy on the screen, required method for game
+Enemy.prototype.render = function () {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function (dt) {
@@ -39,9 +27,9 @@ Enemy.prototype.update = function (dt) {
     this.x += this.speed * dt;
 
   //reset position of enemy to move across canvas with random speeds
-    if (this.x > 600) {
-        this.x=-100;
-        this.speed = Math.floor((Math.random() * 300)+100);
+    if (this.x > 510) {
+        this.x=0;
+        this.speed = Math.floor((Math.random() *300)+100);
     }
     // Checks for collisions between the player and the enemies on the x and y axis gives height and width in pixels
     if (player.x < this.x + 65 &&
@@ -49,7 +37,7 @@ Enemy.prototype.update = function (dt) {
         player.y < this.y + 50 &&
         50+ player.y > this.y) {
 
-          //used https://sweetalert.js.org for popup alert
+          //pop up on collision
           swal({
           icon: "warning",
           text:  "Stay Away From The Beetles!",
@@ -60,11 +48,6 @@ Enemy.prototype.update = function (dt) {
         player.y = 400;
 
     };
-};
-
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function () {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 // Now write your own player class
 // This class requires an update(), render() and
@@ -81,6 +64,14 @@ var Player = function (x, y) {
 };
 
 Player.prototype.update = function (dt) {
+  //if( this.y < -20 ){
+        //this.reset();
+        //level++;
+        //if(level > 3){
+          //level = 1;
+   //}
+   //document.getElementById("level").innerHTML= level;
+    //}
 };
 // Draw the image of the player on the screen, required method for game
 Player.prototype.render = function () {
@@ -115,9 +106,7 @@ var yAxis = 83;
              this.x = 200;
              this.y = 400;
          }, 1000);
-
        };
-
     };
 
 // Now instantiate your objects.
