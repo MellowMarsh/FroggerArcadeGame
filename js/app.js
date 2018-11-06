@@ -1,7 +1,24 @@
 
+//this shows the number of lives
+//var Item = function (x , y , star){
+  //this.star ='images/Star.png';
+  //this.x=x;
+  //this.y=y;
+
+//};
+//draw stars on canvas
+//    //ctx.drawImage(Resources.get(this.star), this.x, this.y);
+
+//};
+
+//Item.prototype.update = function (dt) {
+
+//};
+
+
 // Enemies our player must avoid
 //Appearance, starting postion, and speed of enemy
-var Enemy = function (x, y, speed) {
+var Enemy = function (x, y, speed ) {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
 
@@ -10,7 +27,7 @@ var Enemy = function (x, y, speed) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
-    this.speed = speed
+    this.speed = speed;
 };
 
 // Update the enemy's position, required method for game
@@ -22,7 +39,7 @@ Enemy.prototype.update = function (dt) {
     this.x += this.speed * dt;
 
   //reset position of enemy to move across canvas with random speeds
-    if (this.x > 505) {
+    if (this.x > 600) {
         this.x=-100;
         this.speed = Math.floor((Math.random() * 300)+100);
     }
@@ -31,7 +48,14 @@ Enemy.prototype.update = function (dt) {
         player.x + 65 > this.x &&
         player.y < this.y + 50 &&
         50+ player.y > this.y) {
-        alert("Start Over!");
+
+          //used https://sweetalert.js.org for popup alert
+          swal({
+          icon: "warning",
+          text:  "Stay Away From The Beetles!",
+          button: "Start Over!",
+
+    });
         player.x = 200;
         player.y = 400;
 
@@ -52,11 +76,11 @@ var Player = function (x, y) {
     this.player = 'images/char-princess-girl.png';
     this.x = x;
     this.y = y;
+
     //no need to add speed here.
 };
 
 Player.prototype.update = function (dt) {
-
 };
 // Draw the image of the player on the screen, required method for game
 Player.prototype.render = function () {
@@ -80,16 +104,21 @@ var yAxis = 83;
         this.y += yAxis ;
     }
     //when player reaches water this repositions to start of game
-    //my win pop up needs to be here
-
      if (this.y < 0) {
-         setTimeout(() => {
-       alert('You Won!');
+        setTimeout(() => {
+           swal({
+           title: "Good job!",
+           text: "You Reached The Water!",
+           icon: "success",
+           button: "Play Again!",
+       });
              this.x = 200;
              this.y = 400;
          }, 1000);
-   };
-};
+
+       };
+
+    };
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -102,8 +131,8 @@ var player = new Player(200, 400);
 
 //new enemy beetles are created at x=0 at the position of y with a speed of 300
 enemyPosition.forEach(function (posY) {
-  enemy = new Enemy(0, posY, 300);
-  allEnemies.push(enemy);
+enemy = new Enemy(0, posY, 300);
+allEnemies.push(enemy);
 });
 
 // This listens for key presses and sends the keys to your
