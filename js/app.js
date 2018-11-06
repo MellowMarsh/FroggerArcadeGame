@@ -1,4 +1,9 @@
 
+// Place all enemy objects in an array called allEnemies
+var allEnemies = [];
+//position of enemy beetles
+var enemyPosition= [60, 70, 140, 225, 240];
+
 // Enemies our player must avoid
 //Appearance, starting postion, and speed of enemy
 var Enemy = function (x, y, speed ) {
@@ -12,12 +17,10 @@ var Enemy = function (x, y, speed ) {
     this.y = y;
     this.speed = speed;
 };
-
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function (dt) {
@@ -27,28 +30,30 @@ Enemy.prototype.update = function (dt) {
     this.x += this.speed * dt;
 
   //reset position of enemy to move across canvas with random speeds
-    if (this.x > 510) {
-        this.x=0;
+    if (this.x > 505) {
+        this.x=-50;
         this.speed = Math.floor((Math.random() *300)+100);
     }
     // Checks for collisions between the player and the enemies on the x and y axis gives height and width in pixels
-    if (player.x < this.x + 65 &&
+    if (player.x < this.x  +65 &&
         player.x + 65 > this.x &&
         player.y < this.y + 50 &&
         50+ player.y > this.y) {
-
+          player.x = 200;
+          player.y = 400;
           //pop up on collision
           swal({
           icon: "warning",
           text:  "Stay Away From The Beetles!",
           button: "Start Over!",
-
     });
-        player.x = 200;
-        player.y = 400;
-
     };
 };
+//new enemy beetles are created at x=0 at the position of y with a speed of 300
+enemyPosition.forEach(function (posY) {
+enemy = new Enemy(0, posY, 300);
+allEnemies.push(enemy);
+});
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
@@ -59,32 +64,22 @@ var Player = function (x, y) {
     this.player = 'images/char-princess-girl.png';
     this.x = x;
     this.y = y;
-
-    //no need to add speed here.
 };
 
 Player.prototype.update = function (dt) {
-  //if( this.y < -20 ){
-        //this.reset();
-        //level++;
-        //if(level > 3){
-          //level = 1;
-   //}
-   //document.getElementById("level").innerHTML= level;
-    //}
+  this.handleInput();
 };
 // Draw the image of the player on the screen, required method for game
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.player), this.x, this.y);
 };
-
 // Allows the user to press the arrow keys to jump from tile to tile
 Player.prototype.handleInput = function (keyPress) {
 
 var xAxis = 100;
 var yAxis = 83;
 
-  // The postions of player moves on the gameboard and keeps players on canvas
+  // The positions of player moves on the gameboard and keeps players on canvas
     if (keyPress == 'left' && this.x > 0) {
         this.x -= xAxis;
     }else if (keyPress == 'right' && this.x < 400) {
@@ -95,35 +90,23 @@ var yAxis = 83;
         this.y += yAxis ;
     }
     //when player reaches water this repositions to start of game
-     if (this.y < 0) {
+    if (this.y < 0) {
         setTimeout(() => {
-           swal({
-           title: "Good job!",
-           text: "You Reached The Water!",
-           icon: "success",
-           button: "Play Again!",
-       });
-             this.x = 200;
-             this.y = 400;
-         }, 1000);
+          this.x = 200;
+          this.y = 400;
+        }, 2000);
+          //pop up for when you reach the water
+              swal({
+               title: "Good job!",
+               text: "You Reached The Water!",
+               icon: "success",
+               button: "Play Again!",
+           })
        };
     };
-
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
-var allEnemies = [];
-//position of enemy beetles
-var enemyPosition= [60, 140, 225];
-//creates a new player at the postion of 200 and 400
-var player = new Player(200, 400);
-
-//new enemy beetles are created at x=0 at the position of y with a speed of 300
-enemyPosition.forEach(function (posY) {
-enemy = new Enemy(0, posY, 300);
-allEnemies.push(enemy);
-});
-
+    // Place the player object in a variable called player
+    //creates a new player at the postion of 200 and 400
+    var player = new Player(200, 400);
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method.
 document.addEventListener('keyup', function (e) {
