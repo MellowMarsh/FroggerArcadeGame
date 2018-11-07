@@ -21,6 +21,8 @@
 
 ## Tools Used:
 
+* Slack: Grow_with_Google_Nanodegrees/students
+
 * Cloned Repo:
   https://github.com/udacity/frontend-nanodegree-arcade-game
 
