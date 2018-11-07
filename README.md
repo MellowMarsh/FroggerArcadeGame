@@ -28,6 +28,7 @@
   https://www.youtube.com/watch?v=JcQYGbg0IkQ
   
 * StackOverflow
+  https://stackoverflow.com/questions/38710416/collision-between-objects-in-javascript
   https://stackoverflow.com/questions/23870938/math-random-function-not-properly-working-in-javascript-with-if-statement
   
 * MDN
