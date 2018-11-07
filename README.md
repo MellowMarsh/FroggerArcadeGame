@@ -26,7 +26,7 @@
 * Cloned Repo:
   https://github.com/udacity/frontend-nanodegree-arcade-game
   
-* Help with Enemy.prototype.update = function(dt):
+* Help with Enemy.prototype.update = function(dt)/Specifically the player and enemy collision:
   https://github.com/brenopolanski/udacity-classic-arcade-game-clone.git
 
 * Help with setTimeout():
