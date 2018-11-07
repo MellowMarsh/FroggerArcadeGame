@@ -19,7 +19,7 @@ Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     ctx.font = "20px Roboto";
     ctx.textAlign = "center";
-    // gave beetles a unique name
+    // give beetles a unique name
     ctx.fillText(this.title, this.x + 40, this.y + 110);
 };
 // Update the enemy's position, required method for game
@@ -29,7 +29,7 @@ Enemy.prototype.update = function (dt) {
   // which will ensure the game runs at the same speed for
   // all computers.
     this.x += this.speed * dt;
-  //reset position of enemy to move across canvas with random speeds
+  //reset position of enemy to move across canvas with random speeds, help found on stackoverflow
     if (this.x > 505) {
         this.x=-50;
         this.speed = Math.floor((Math.random() *300)+100);
@@ -39,7 +39,7 @@ Enemy.prototype.update = function (dt) {
         player.x + 60 > this.x &&
         player.y < this.y + 70 &&
         70+ player.y > this.y) {
-          //pop up on collision
+          // a pop up on enemy collision!! (sweetalert.js.org)
           swal({
           icon: "warning",
           text:  "Stay Away From The Beetles!",
@@ -74,16 +74,15 @@ Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.player), this.x, this.y);
     ctx.font = "20px Roboto";
     ctx.textAlign = "center";
-    // gave player a unique title
+    // give player a unique title
     ctx.fillText(this.title, this.x + 50, this.y + 155);
 };
 // Allows the user to press the arrow keys to jump from tile to tile
 Player.prototype.handleInput = function (keyPress) {
-
+  // The positions of player moves on the gameboard and keeps players on canvas help was provided for the keypress by student on slack, much thanks.
   var xAxis = 100;
   var yAxis = 83;
 
-    // The positions of player moves on the gameboard and keeps players on canvas
       if (keyPress == 'left' && this.x > 0) {
           this.x -= xAxis;
       }else if (keyPress == 'right' && this.x < 400) {
@@ -93,10 +92,10 @@ Player.prototype.handleInput = function (keyPress) {
       }else if (keyPress == 'down' && this.y < 400) {
           this.y += yAxis ;
       }
-      //when player reaches water this repositions to start of game
+      //when player reaches water this repositions to start of game i used my memory game project to help with this!!
     if (this.y < 0) {
         setTimeout(() => {
-          //pop up for when you reach the water
+          //give a pop up for when you reach the water!! (sweetalert.js.org)
               swal({
                title: "Good job!",
                text: "You Reached The Water!",
