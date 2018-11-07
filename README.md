@@ -29,6 +29,10 @@
 * Help with Enemy.prototype.update = function(dt):
   https://github.com/brenopolanski/udacity-classic-arcade-game-clone.git
 
+* Help with setTimeout():
+  https://github.com/MellowMarsh/MemoryGameProject.git
+
+
 * Udacity FEND Webinar - Project #3 Walkthrough
   https://www.youtube.com/watch?v=JcQYGbg0IkQ
   
