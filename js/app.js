@@ -24,12 +24,13 @@ Enemy.prototype.render = function () {
 };
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
+// resourses found on stackoverflow and github
 Enemy.prototype.update = function (dt) {
   // You should multiply any movement by the dt parameter
   // which will ensure the game runs at the same speed for
   // all computers.
     this.x += this.speed * dt;
-  //reset position of enemy to move across canvas with random speeds, help found on stackoverflow, and github
+  //reset position of enemy to move across canvas with random speeds 
     if (this.x > 505) {
         this.x=-50;
         this.speed = Math.floor((Math.random() *300)+100);
@@ -39,7 +40,7 @@ Enemy.prototype.update = function (dt) {
         player.x + 60 > this.x &&
         player.y < this.y + 70 &&
         70+ player.y > this.y) {
-          // a pop up on enemy collision!! (sweetalert.js.org)
+          // for my pop up on enemy collision!! I found this awesome site (sweetalert.js.org)
           swal({
           icon: "warning",
           text:  "Stay Away From The Beetles!",
@@ -95,7 +96,7 @@ Player.prototype.handleInput = function (keyPress) {
       //when player reaches water this repositions to start of game i used my memory game project to help with this!!
     if (this.y < 0) {
         setTimeout(() => {
-          //give a pop up for when you reach the water!! (sweetalert.js.org)
+          //My pop up for when you reach the water!! (sweetalert.js.org)
               swal({
                title: "Good job!",
                text: "You Reached The Water!",
