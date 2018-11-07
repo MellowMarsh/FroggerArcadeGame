@@ -19,7 +19,7 @@ Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     ctx.font = "20px Roboto";
     ctx.textAlign = "center";
-    // give beetles a unique name
+    // give beetles a unique title
     ctx.fillText(this.title, this.x + 40, this.y + 110);
 };
 // Update the enemy's position, required method for game
@@ -36,7 +36,7 @@ Enemy.prototype.update = function (dt) {
         this.speed = Math.floor((Math.random() *300)+100);
     }
     // Checks for collisions between the player and the enemies on the x and y axis gives height and width in pixels
-    if (player.x < this.x  +60 &&
+    if (player.x < this.x + 60 &&
         player.x + 60 > this.x &&
         player.y < this.y + 70 &&
         70+ player.y > this.y) {
@@ -50,7 +50,7 @@ Enemy.prototype.update = function (dt) {
     player.y = 400;
   };
 };
-//new enemy beetles are created at x=0 at the position of y with a speed of 300
+//new enemy beetles are created at x=0 at the position of y with a speed of 300, title
 enemyPosition.forEach(function (axisY) {
 enemy = new Enemy(0, axisY, 300, 'Killer');
 allEnemies.push(enemy);
