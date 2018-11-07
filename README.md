@@ -25,6 +25,9 @@
 
 * Cloned Repo:
   https://github.com/udacity/frontend-nanodegree-arcade-game
+  
+* Help with Enemy.prototype.update = function(dt):
+  https://github.com/brenopolanski/udacity-classic-arcade-game-clone.git
 
 * Udacity FEND Webinar - Project #3 Walkthrough
   https://www.youtube.com/watch?v=JcQYGbg0IkQ
