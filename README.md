@@ -17,7 +17,7 @@
 
 * Try and avoid the enemy beetles.
 
-* If you made it in the water, you can play again. If you collided with a enemy beetle, the player moves back to start position.
+* If you made it in the water, you can play again. If you collided with an enemy beetle, the player moves back to start position.
 
 ## Tools Used:
 
