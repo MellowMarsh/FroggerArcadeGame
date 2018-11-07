@@ -35,18 +35,18 @@ Enemy.prototype.update = function (dt) {
         this.speed = Math.floor((Math.random() *300)+100);
     }
     // Checks for collisions between the player and the enemies on the x and y axis gives height and width in pixels
-    if (player.x < this.x  +65 &&
-        player.x + 65 > this.x &&
-        player.y < this.y + 50 &&
-        50+ player.y > this.y) {
-          player.x = 200;
-          player.y = 400;
+    if (player.x < this.x  +60 &&
+        player.x + 60 > this.x &&
+        player.y < this.y + 70 &&
+        70+ player.y > this.y) {
           //pop up on collision
           swal({
           icon: "warning",
           text:  "Stay Away From The Beetles!",
           button: "Start Over!",
     });
+    player.x = 200;
+    player.y = 400;
   };
 };
 //new enemy beetles are created at x=0 at the position of y with a speed of 300
@@ -74,7 +74,7 @@ Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.player), this.x, this.y);
     ctx.font = "20px Roboto";
     ctx.textAlign = "center";
-    // gave player a unique name
+    // gave player a unique title
     ctx.fillText(this.title, this.x + 50, this.y + 155);
 };
 // Allows the user to press the arrow keys to jump from tile to tile
@@ -96,9 +96,6 @@ Player.prototype.handleInput = function (keyPress) {
       //when player reaches water this repositions to start of game
     if (this.y < 0) {
         setTimeout(() => {
-          this.x = 200;
-          this.y = 400;
-        }, 2000);
           //pop up for when you reach the water
               swal({
                title: "Good job!",
@@ -106,6 +103,9 @@ Player.prototype.handleInput = function (keyPress) {
                icon: "success",
                button: "Play Again!",
            })
+           this.x = 200;
+           this.y = 400;
+         }, 500);
        };
     };
     // Place the player object in a variable called player
