@@ -5,6 +5,9 @@
 * Clone the following repo:
   https://github.com/MellowMarsh/FroggerArcadeGame.git
   
+* Play the Game
+  https://github.com/MellowMarsh/MelloMarsh.github.io-FroggerArcadeGameClone.git
+  
 * Load index.html in your favorite browser.
 
 * Play the game
