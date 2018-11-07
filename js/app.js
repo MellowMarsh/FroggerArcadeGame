@@ -29,7 +29,7 @@ Enemy.prototype.update = function (dt) {
   // which will ensure the game runs at the same speed for
   // all computers.
     this.x += this.speed * dt;
-  //reset position of enemy to move across canvas with random speeds, help found on stackoverflow
+  //reset position of enemy to move across canvas with random speeds, help found on stackoverflow, and github
     if (this.x > 505) {
         this.x=-50;
         this.speed = Math.floor((Math.random() *300)+100);
